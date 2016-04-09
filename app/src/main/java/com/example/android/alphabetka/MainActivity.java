@@ -74,7 +74,12 @@ public class MainActivity extends AppCompatActivity {
     /*    * Change language    */
     public void onBtnLang(View v){
         String newLang = "";
-        newLang =  "en".equals(lang)? "uk" :"en";
+        //newLang =  "en".equals(lang)? "uk" :"en";
+        switch (lang){
+            case "en": newLang = "uk";break;
+            case "uk": newLang = "ru";break;
+            default: newLang = "en";
+        }
         setLocale(newLang);
 
         Intent intent = new Intent(this, MainActivity.class);
