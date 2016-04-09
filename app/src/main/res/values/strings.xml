@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Alphabet</string>
+    <string name="btn_learn">Learn</string>
+    <string name="btn_test">Test</string>
+    <string name="btn_exam">Exam</string>
+    <string name="btn_lang">Language</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_letterA">Vowel</string>
+    <string name="btn_letterB">Consonantal</string>
+    <string name="txt_err">Mistakes</string>
+    <string name="txt_good">Correct</string>
+    <string name="err_lang">Unsupported language</string>
+    <string name="toastTest">Click on color button to answer what is letter: vowel or consonantal</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Азбука</string>
+    <string name="btn_learn">Вчити</string>
+    <string name="btn_test">Тест</string>
+    <string name="btn_exam">Екзамен</string>
+    <string name="btn_lang">Мова</string>
+    <string name="err_lang">Мова не підтримується.</string>
+    <string name="btn_back">Назад</string>
+    <string name="btn_next">Далі</string>
+    <string name="btn_letterA">Голосні</string>
+    <string name="btn_letterB">Приголосні</string>
+    <string name="txt_err">Помилки</string>
+    <string name="toastTest">Тисни кольорову кнопку щоб відповісти голосна чи приголосна літера</string>
+    <string name="txt_good">Правильно</string>
+</resources>
