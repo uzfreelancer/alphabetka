@@ -30,7 +30,7 @@ public class TestMode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_mode);
         lang = this.getIntent().getStringExtra("lang");
-        Log.e("Test lang ", lang);
+        Log.d("Test lang ", lang);
         Init();
     }
     private void Init(){
@@ -124,7 +124,7 @@ public class TestMode extends AppCompatActivity {
         outState.putInt("index", index);
         outState.putInt("mistakes", mistakes);
         outState.putInt("corrects", corrects);
-        //Log.e("put index ", ""+index);
+
         super.onSaveInstanceState(outState);
     }
     @Override
@@ -133,7 +133,7 @@ public class TestMode extends AppCompatActivity {
         mistakes = savedInstance.getInt("mistakes", 0);
         corrects = savedInstance.getInt("corrects", 0);
         setLetter();
-        //Log.e("Exract Index ", ""+index);
+
         super.onRestoreInstanceState(savedInstance);
     }
 

@@ -1,8 +1,10 @@
 package com.example.android.alphabetka;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.Configuration;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -19,18 +21,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        lang = getCurrentLocale();
+        applyLocale(lang);
         setContentView(R.layout.activity_main);
 
-        //Log.e("Try to get lang ", this.getIntent().getStringExtra("lang"));
-
-        String  confLang = this.getResources().getConfiguration().locale.getLanguage();
-        Log.e("Sytem language", confLang);
-        if("ua".equals(confLang)) lang ="ua";
-        if("en".equals(confLang)) lang ="en";
+        Log.d("System language", lang);
 
         Button be = (Button) findViewById(R.id.btnExam);
         be.setVisibility(View.INVISIBLE);
     }
+    private void setLocale(String locale)
+    {
+        lang = locale;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences.edit().putString("LOCALE", locale).apply();
+    }
+    private String getCurrentLocale()
+    {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        return  preferences.getString("LOCALE","en");
+    }
+    private void applyLocale(String lang)
+    {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+    }
+
+
     /*    * Call "Learn mode"    */
     public void onBtnLearn(View v){
         //Toast.makeText(MainActivity.this, "Алфавіт. Голосні/приголосні", Toast.LENGTH_SHORT).show();
@@ -53,38 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
     /*    * Change language    */
     public void onBtnLang(View v){
+        String newLang = "";
+        newLang =  "en".equals(lang)? "uk" :"en";
+        setLocale(newLang);
 
-        if("en".equals(lang)) {
-            lang = "ua";
-        } else
-        {
-            lang="en";
-//            if(lang == "ua") {
-//                lang = "ru";
-//            } else {
-//                if (lang == "ru") {
-//                    lang == "en";
-//                }
-//            }
-        };
-
-        Toast.makeText(MainActivity.this, "Мова міняється на "+ lang, Toast.LENGTH_SHORT).show();
-
-        Resources res = this.getResources();
-        // Change locale settings in the app.
-        DisplayMetrics dm = res.getDisplayMetrics();
-        android.content.res.Configuration conf = res.getConfiguration();
-        conf.locale = new Locale(lang);
-        //conf.locale = new Locale(language_code.toLowerCase());
-        res.updateConfiguration(conf, dm);
-        Log.e("Current language ", conf.locale.getLanguage());
-
-        //conf.locale.setDefault(new Locale("US"));
-        //res.updateConfiguration(conf, dm);
-//        Intent refresh = new Intent(this, MainActivity.class);
-//        //refresh.putExtra("lang", lang);
-//        finish();
-//        startActivity(refresh);
+        Intent intent = new Intent(this, MainActivity.class);
+        finish();
+        startActivity(intent);
     }
 
 }

@@ -21,14 +21,13 @@ public class LearnMode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learn_mode);
         lang = getIntent().getStringExtra("lang");
-        Log.e("Learn Mode lang ", lang);
+        Log.d("Learn Mode lang ", lang);
         Init();
     }
     private void Init(){
         tv = (TextView) findViewById(R.id.txtLetter);
         ab = global.getAlphabet(lang);
         a = global.getAlphabetGolosni(lang);
-        //index = global.index;
         setLetter();
     }
     private void setLetter(){
@@ -58,21 +57,17 @@ public class LearnMode extends AppCompatActivity {
     public void onBtnNext(View v){
         index = index + 1;
         if(index >= ab.length){ index = 0;};
-        //Log.e("LearnMode", ab[index]);
-        //Log.e("Lang ", global.getLang());
         setLetter();
     }
     @Override
     protected void onSaveInstanceState(Bundle outState){
         outState.putInt("index", index);
-        //Log.e("put index ", ""+index);
         super.onSaveInstanceState(outState);
      }
     @Override
     protected void onRestoreInstanceState(Bundle savedInstance){
         index = savedInstance.getInt("index", 0);
         setLetter();
-        //Log.e("Exract Index ", ""+index);
         super.onRestoreInstanceState(savedInstance);
     }
 
