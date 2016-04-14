@@ -13,4 +13,5 @@
     <string name="txt_err">Помилки</string>
     <string name="toastTest">Тисни кольорову кнопку щоб відповісти голосна чи приголосна літера</string>
     <string name="txt_good">Правильно</string>
+    <string name="toastTestEnd">Тест завершено.</string>
 </resources>

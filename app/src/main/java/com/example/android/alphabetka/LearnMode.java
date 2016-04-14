@@ -20,20 +20,24 @@ public class LearnMode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learn_mode);
+        /* get Language */
         lang = getIntent().getStringExtra("lang");
         Log.d("Learn Mode lang ", lang);
         Init();
     }
     private void Init(){
         tv = (TextView) findViewById(R.id.txtLetter);
+        /* Get data according lang */
         ab = global.getAlphabet(lang);
         a = global.getAlphabetGolosni(lang);
         setLetter();
     }
+    /* Show letter */
     private void setLetter(){
         tv.setText(ab[index]);
         setColorToTextView();
     }
+    /* set Color to current letter */
     private void setColorToTextView(){
         if( isGolosna(ab[index]) ){
             //tv.setTextColor(R.color.colorAccent);
@@ -44,6 +48,7 @@ public class LearnMode extends AppCompatActivity {
         };
 
     }
+    /* Help function to define letter type */
     private boolean isGolosna(String bukva){
         for(int i = 0; i < a.length; i++){
 
@@ -51,6 +56,7 @@ public class LearnMode extends AppCompatActivity {
         }
         return false;
     }
+    /* Back to main View */
     public void onBtnBack(View v){
         this.finish();
     }
@@ -59,6 +65,7 @@ public class LearnMode extends AppCompatActivity {
         if(index >= ab.length){ index = 0;};
         setLetter();
     }
+    /* Function to save and restore settings when  changes orientation */
     @Override
     protected void onSaveInstanceState(Bundle outState){
         outState.putInt("index", index);

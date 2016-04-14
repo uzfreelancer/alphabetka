@@ -13,4 +13,5 @@
     <string name="txt_err">Ошибки</string>
     <string name="toastTest">Нажимай на цветную кнопку  что б ответить гласная или согласная буква</string>
     <string name="txt_good">Правильно</string>
+    <string name="toastTestEnd">Тест окончен.</string>
 </resources>

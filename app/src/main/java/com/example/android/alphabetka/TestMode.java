@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.android.alphabetka.Global;
 
 import java.util.Timer;
@@ -29,6 +31,7 @@ public class TestMode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_mode);
+        /*Get language */
         lang = this.getIntent().getStringExtra("lang");
         Log.d("Test lang ", lang);
         Init();
@@ -104,17 +107,22 @@ public class TestMode extends AppCompatActivity {
     }
     private void nextLetter(){
         index = index + 1;
-        if(index >= ab.length){ index = 0;};
-
-        delayed = true;
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                delayed = false;
-                setLetter();
-            }
-        }, 1000); // 2000ms delay
+        if(index >= ab.length){
+            //index = 0;
+            delayed = true;
+            Toast.makeText(this,getString(R.string.toastTestEnd), Toast.LENGTH_LONG).show();
+        }
+        else {
+            delayed = true;
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    delayed = false;
+                    setLetter();
+                    }
+            }, 1000); // 2000ms delay
+        }
     }
 
 

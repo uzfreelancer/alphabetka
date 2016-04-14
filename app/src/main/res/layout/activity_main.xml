@@ -28,9 +28,10 @@
             style="@style/interfaceButtons"
             android:text="@string/btn_exam"
             android:onClick="onBtnExam"/>
-        <Button
+        <ImageButton
             android:id="@+id/btnLang"
             style="@style/interfaceButtons"
+            android:src="@drawable/en"
             android:text="@string/btn_lang"
             android:onClick="onBtnLang"/>
 

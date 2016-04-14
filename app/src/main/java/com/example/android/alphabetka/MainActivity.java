@@ -11,6 +11,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -26,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.d("System language", lang);
+
+        ImageButton langBtn = (ImageButton) findViewById(R.id.btnLang);
+        if ("en".equals(lang)) langBtn.setImageResource(R.drawable.en);
+        if ("ru".equals(lang)) langBtn.setImageResource(R.drawable.ru);
+        if ("uk".equals(lang)) langBtn.setImageResource(R.drawable.ua);
 
         Button be = (Button) findViewById(R.id.btnExam);
         be.setVisibility(View.INVISIBLE);
@@ -47,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+
     }
 
 
